@@ -1,4 +1,4 @@
-from model.dynamics import Dynamic
+from trajectron.model.dynamics import Dynamic
 
 
 class Linear(Dynamic):

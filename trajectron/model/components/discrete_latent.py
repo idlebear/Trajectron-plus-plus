@@ -1,7 +1,7 @@
 import torch
 import torch.distributions as td
 import numpy as np
-from model.model_utils import ModeKeys
+from trajectron.model.model_utils import ModeKeys
 
 
 class DiscreteLatent(object):

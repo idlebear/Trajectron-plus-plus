@@ -1,7 +1,7 @@
 import torch
-from model.dynamics import Dynamic
-from utils import block_diag
-from model.components import GMM2D
+from trajectron.model.dynamics import Dynamic
+from trajectron.utils import block_diag
+from trajectron.model.components import GMM2D
 
 
 class SingleIntegrator(Dynamic):

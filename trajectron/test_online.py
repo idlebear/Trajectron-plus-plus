@@ -9,9 +9,9 @@ import evaluation
 import numpy as np
 import visualization as vis
 from argument_parser import args
-from model.online.online_trajectron import OnlineTrajectron
-from model.model_registrar import ModelRegistrar
-from environment import Environment, Scene
+from trajectron.model.online.online_trajectron import OnlineTrajectron
+from trajectron.model.model_registrar import ModelRegistrar
+from trajectron.environment import Environment, Scene
 import matplotlib.pyplot as plt
 
 if not torch.cuda.is_available() or args.device == 'cpu':
@@ -107,10 +107,12 @@ def get_maps_for_input(input_dict, scene, hyperparams):
 def main():
     # Choose one of the model directory names under the experiment/*/models folders.
     # Possibilities are 'vel_ee', 'int_ee', 'int_ee_me', or 'robot'
-    model_dir = os.path.join(args.log_dir, 'int_ee')
+#     model_dir = os.path.join(args.log_dir, 'int_ee')
+    model_dir = args.log_dir
 
     # Load hyperparameters from json
-    config_file = os.path.join(model_dir, args.conf)
+    # config_file = os.path.join(model_dir, args.conf)
+    config_file = os.path.join(os.getcwd(), args.conf)
     if not os.path.exists(config_file):
         raise ValueError('Config json not found!')
     with open(config_file, 'r') as conf_json:
@@ -188,7 +190,7 @@ def main():
         dists, preds = trajectron.incremental_forward(input_dict,
                                                       maps,
                                                       prediction_horizon=6,
-                                                      num_samples=1,
+                                                      num_samples=100,
                                                       robot_present_and_future=robot_present_and_future,
                                                       full_dist=True)
         end = time.time()

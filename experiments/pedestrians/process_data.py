@@ -5,9 +5,9 @@ import pandas as pd
 import dill
 
 sys.path.append("../../trajectron")
-from environment import Environment, Scene, Node
-from utils import maybe_makedirs
-from environment import derivative_of
+from trajectron.environment import Environment, Scene, Node
+from trajectron.utils import maybe_makedirs
+from trajectron.environment import derivative_of
 
 desired_max_time = 100
 pred_indices = [2, 3]

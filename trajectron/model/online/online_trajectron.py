@@ -1,10 +1,10 @@
 import torch
 import numpy as np
 from collections import Counter
-from model.trajectron import Trajectron
-from model.online.online_mgcvae import OnlineMultimodalGenerativeCVAE
-from model.model_utils import ModeKeys
-from environment import RingBuffer, TemporalSceneGraph, SceneGraph, derivative_of
+from trajectron.model.trajectron import Trajectron
+from trajectron.model.online.online_mgcvae import OnlineMultimodalGenerativeCVAE
+from trajectron.model.model_utils import ModeKeys
+from trajectron.environment import RingBuffer, TemporalSceneGraph, SceneGraph, derivative_of
 
 
 class OnlineTrajectron(Trajectron):

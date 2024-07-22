@@ -4,13 +4,13 @@ import torch.nn as nn
 import torch.nn.functional as F
 import numpy as np
 from collections import defaultdict, Counter
-from model.components import *
-from model.model_utils import *
-from model.dataset import get_relative_robot_traj
-import model.dynamics as dynamic_module
-from model.mgcvae import MultimodalGenerativeCVAE
-from environment.scene_graph import DirectedEdge
-from environment.node_type import NodeType
+from trajectron.model.components import *
+from trajectron.model.model_utils import *
+from trajectron.model.dataset import get_relative_robot_traj
+import trajectron.model.dynamics as dynamic_module
+from trajectron.model.mgcvae import MultimodalGenerativeCVAE
+from trajectron.environment.scene_graph import DirectedEdge
+from trajectron.environment.node_type import NodeType
 
 
 class OnlineMultimodalGenerativeCVAE(MultimodalGenerativeCVAE):
@@ -206,12 +206,12 @@ class OnlineMultimodalGenerativeCVAE(MultimodalGenerativeCVAE):
         # Map Encoding #
         ################
         if self.hyperparams['use_map_encoding'] and self.node_type in self.hyperparams['map_encoder']:
-            if self.node not in maps:
+            if self.node.type not in maps:
                 # This means the node was removed (it is only being kept around because of the edge removal filter).
                 me_params = self.hyperparams['map_encoder'][self.node_type]
-                self.TD['encoded_map'] = torch.zeros((1, me_params['output_size']))
+                self.TD['encoded_map'] = torch.zeros((1, me_params['output_size']), device=self.device)
             else:
-                encoded_map = self.node_modules[self.node_type + '/map_encoder'](maps[self.node] * 2. - 1.,
+                encoded_map = self.node_modules[self.node_type + '/map_encoder'](maps[self.node.type] * 2. - 1.,
                                                                                  (mode == ModeKeys.TRAIN))
                 do = self.hyperparams['map_encoder'][self.node_type]['dropout']
                 encoded_map = F.dropout(encoded_map, do, training=(mode == ModeKeys.TRAIN))

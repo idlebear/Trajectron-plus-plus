@@ -2,10 +2,10 @@ import warnings
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
-from model.components import *
-from model.model_utils import *
-import model.dynamics as dynamic_module
-from environment.scene_graph import DirectedEdge
+from trajectron.model.components import *
+from trajectron.model.model_utils import *
+import trajectron.model.dynamics as dynamic_module
+from trajectron.environment.scene_graph import DirectedEdge
 
 
 class MultimodalGenerativeCVAE(object):

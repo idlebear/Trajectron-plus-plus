@@ -9,9 +9,9 @@ import pandas as pd
 
 sys.path.append("../../trajectron")
 from tqdm import tqdm
-from model.model_registrar import ModelRegistrar
-from model.trajectron import Trajectron
-import evaluation
+from trajectron.model.model_registrar import ModelRegistrar
+from trajectron.model.trajectron import Trajectron
+import trajectron.evaluation
 
 seed = 0
 np.random.seed(seed)

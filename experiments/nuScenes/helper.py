@@ -7,9 +7,9 @@ import matplotlib.patheffects as pe
 from scipy.ndimage import rotate
 import seaborn as sns
 
-from model.model_registrar import ModelRegistrar
-from model import Trajectron
-from utils import prediction_output_to_trajectories
+from trajectron.model.model_registrar import ModelRegistrar
+from trajectron.model import Trajectron
+from trajectron.utils import prediction_output_to_trajectories
 
 from scipy.integrate import cumtrapz
 

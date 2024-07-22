@@ -1,4 +1,4 @@
-from utils import prediction_output_to_trajectories
+from trajectron.utils import prediction_output_to_trajectories
 from scipy import linalg
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches

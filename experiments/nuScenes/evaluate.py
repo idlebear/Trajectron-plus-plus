@@ -9,10 +9,10 @@ import pandas as pd
 
 sys.path.append("../../trajectron")
 from tqdm import tqdm
-from model.model_registrar import ModelRegistrar
-from model.trajectron import Trajectron
-import evaluation
-import utils
+from trajectron.model.model_registrar import ModelRegistrar
+from trajectron.model.trajectron import Trajectron
+import trajectron.evaluation
+import trajectron.utils
 from scipy.interpolate import RectBivariateSpline
 
 seed = 0

@@ -1,7 +1,7 @@
 import torch
 import numpy as np
-from model.mgcvae import MultimodalGenerativeCVAE
-from model.dataset import get_timesteps_data, restore
+from trajectron.model.mgcvae import MultimodalGenerativeCVAE
+from trajectron.model.dataset import get_timesteps_data, restore
 
 
 class Trajectron(object):
